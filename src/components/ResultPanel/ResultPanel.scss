@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+
+.result-panel {
+    flex: 1;
+    background-color: $very-dark-cyan;
+    border-radius: 2rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reset-button {
+    border: 0px;
+    outline: none;
+    background-color: $primary-color;
+    font-size: $input-font-size;
+    border-radius: .5rem;
+    padding:.5rem;
+
+    &:disabled {
+        background-color: $dark-grayish-cyan;
+        color: $very-dark-cyan;
+    }
+}
+
+.label {
+    color: #fff;
+}
+
+.unit {
+    color: $dark-grayish-cyan;
+    font-size: 10px;
+}
+
+.value-results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.value-container {
+    display: flex;
+    justify-content: space-between;
+
+    .label-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .value {
+        font-size: 30px;
+        color: $primary-color;
+    }
+}
