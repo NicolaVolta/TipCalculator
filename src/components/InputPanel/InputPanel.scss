@@ -80,11 +80,24 @@
 }
 
 .number-of-people-container-error {
-    border: solid 2px #ff0000 !important;
+    border: solid 1px #ff0000 !important;
+}
+
+input[type=number]:focus {
+    border: solid 1px $primary-color !important;
+}
+
+.selected-percentage {
+    outline: none;
+    background-color: $primary-color !important;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+input:hover {
+    cursor: pointer;
 }

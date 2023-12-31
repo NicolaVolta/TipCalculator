@@ -27,6 +27,10 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
         onInputChange({ ...inputs, peopleNumber: newValue});
     }
 
+    const isPercentageSelected = (value: number, isCustom: boolean): boolean => {
+        return isCustom && inputs.tip?.isCustom || (!inputs.tip?.isCustom && !isCustom && value === inputs.tip?.value);
+    }
+
     return (
         <div className='input-panel'>
             <span>Bill</span>
@@ -38,14 +42,32 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
             <span>Select Tip %</span>
             <div className='tip-percentage'>
                 <div>
-                    <input type='button' value="5%" onClick={() => selectPercentage(5, false)}/>
-                    <input type='button' value="10%" onClick={() => selectPercentage(10, false)}/>
-                    <input type='button' value="15%" onClick={() => selectPercentage(15, false)}/>
+                    <input type='button' 
+                        value="5%" 
+                        className={`${isPercentageSelected(5, false) ? 'selected-percentage' : ''}`}
+                        onClick={() => selectPercentage(5, false)}/>
+                    <input type='button' 
+                        value="10%" 
+                        className={`${isPercentageSelected(10, false) ? 'selected-percentage' : ''}`}
+                        onClick={() => selectPercentage(10, false)}/>
+                    <input type='button' 
+                        value="15%"
+                        className={`${isPercentageSelected(15, false) ? 'selected-percentage' : ''}`} 
+                        onClick={() => selectPercentage(15, false)}/>
                 </div>
                 <div>
-                    <input type='button' value="25%" onClick={() => selectPercentage(25, false)}/>
-                    <input type='button' value="50%" onClick={() => selectPercentage(50, false)}/>
-                    <input type='number' placeholder="Custom"  onChange={(e) => selectPercentage(Number(e.target.value), true)}/>
+                    <input type='button' 
+                        value="25%" 
+                        className={`${isPercentageSelected(25, false) ? 'selected-percentage' : ''}`}
+                        onClick={() => selectPercentage(25, false)}/>
+                    <input type='button' 
+                        value="50%" 
+                        className={`${isPercentageSelected(50, false) ? 'selected-percentage' : ''}`}
+                        onClick={() => selectPercentage(50, false)}/>
+                    <input type='number' 
+                        placeholder="Custom"  
+                        className={`${isPercentageSelected(0, true) ? 'selected-percentage' : ''}`}
+                        onChange={(e) => selectPercentage(Number(e.target.value), true)}/>
                 </div>
             </div>
 
