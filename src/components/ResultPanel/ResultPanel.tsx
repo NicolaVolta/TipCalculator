@@ -46,7 +46,7 @@ export const ResultPanel = ({ onReset, inputs }: iResultPanelProps) => {
                     </div>
                 </div>
             </div>
-            <input type='button' value='RESET' className='reset-button' onClick={onReset}/>
+            <input disabled={inputs.bill === 0 || inputs.peopleNumber === 0} type='button' value='RESET' className='reset-button' onClick={onReset}/>
         </div>
     )
 }
