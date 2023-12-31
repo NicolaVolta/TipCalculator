@@ -1,4 +1,4 @@
-import React, { FocusEvent, useState } from 'react';
+import { FocusEvent } from 'react';
 import './InputPanel.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
