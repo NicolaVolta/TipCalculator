@@ -1,7 +1,28 @@
+import React, { useMemo } from 'react';
 import './ResultPanel.scss';
+import { tInputs } from '../../pages/App';
 
+interface iResultPanelProps {
+    onReset: () => void,
+    inputs: tInputs
+}
 
-export const ResultPanel = () => {
+export const ResultPanel = ({ onReset, inputs }: iResultPanelProps) => {
+
+    const tipAmount = useMemo(() => {
+        if(inputs.tip === undefined) return 0;
+        if(inputs.peopleNumber === 0) return 0;
+
+        const totalTip = (inputs.bill * inputs.tip.value)/100;
+
+        return (totalTip / inputs.peopleNumber).toFixed(2);
+    }, [inputs]);
+
+    const total = useMemo(() => {
+        if(inputs.peopleNumber === 0) return 0;
+        
+        return (inputs.bill / inputs.peopleNumber).toFixed(2);
+    }, [inputs]);
 
     return (
         <div className='result-panel'>
@@ -12,7 +33,7 @@ export const ResultPanel = () => {
                         <span className='unit'>/ person</span>
                     </div>
                     <div className='value'>
-                        <span>$0</span>
+                        <span>{`$${tipAmount}`}</span>
                     </div>
                 </div>
                 <div className='value-container'>
@@ -21,11 +42,11 @@ export const ResultPanel = () => {
                         <span className='unit'>/ person</span>
                     </div>
                     <div className='value'>
-                        <span>$0</span>
+                        <span>{`$${total}`}</span>
                     </div>
                 </div>
             </div>
-            <input type='button' value='RESET' className='reset-button'/>
+            <input type='button' value='RESET' className='reset-button' onClick={onReset}/>
         </div>
     )
 }

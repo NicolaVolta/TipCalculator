@@ -1,9 +1,35 @@
+import { useState } from 'react';
 import './App.scss';
 import { InputPanel } from '../components/InputPanel/InputPanel';
 import { ResultPanel } from '../components/ResultPanel/ResultPanel';
 
+type tTipPercentage = {
+    value: number;
+    isCustom: boolean;
+}
+
+export type tInputs = {
+    bill: number,
+    peopleNumber: number,
+    tip?: tTipPercentage
+}
+
+const defaultInput: tInputs = {
+    bill: 0,
+    peopleNumber: 0
+}
 
 function App() {
+    const [inputs, setInputs] = useState<tInputs>(defaultInput);
+
+    const handleInputChange = (newInput: tInputs) => {
+        setInputs(newInput);
+    }
+
+    const handleReset = () => {
+        setInputs(defaultInput);
+    }
+
     return (
         <div className='tip-page'>
             <div className='title'>
@@ -12,8 +38,8 @@ function App() {
             </div>
 
             <div className='tip-container'>
-                <InputPanel/>
-                <ResultPanel/>
+                <InputPanel onInputChange={handleInputChange} inputs={inputs}/>
+                <ResultPanel onReset={handleReset} inputs={inputs}/>
             </div>
         </div>
     )
