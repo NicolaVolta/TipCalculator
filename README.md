@@ -20,3 +20,6 @@ Users should be able to:
 - SASS
 - Flexbox
 - Mobile-first workflow
+
+### Live demo
+https://tip-calculator-3m1qef91m-nickvoltas-projects.vercel.app/
