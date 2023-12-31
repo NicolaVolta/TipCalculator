@@ -49,7 +49,10 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
                 </div>
             </div>
 
-            <span>Number of people</span>
+            <div className='number-of-people-container'>
+                <span>Number of people</span>
+                {inputs.peopleNumber === 0 && <span className='error'>Can't be zero</span>}
+            </div>
             <div className='input'>
                 <FontAwesomeIcon icon={faUser} className='icon'/>
                 <input type='number' value={inputs.peopleNumber} onFocus={handleFocus} onChange={(e) => onPeopleChange(Number(e.target.value))}/>
