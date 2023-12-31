@@ -51,11 +51,15 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
 
             <div className='number-of-people-container'>
                 <span>Number of people</span>
-                {inputs.peopleNumber === 0 && <span className='error'>Can't be zero</span>}
+                {inputs.peopleNumber === 0 && <span className='number-of-people-error'>Can't be zero</span>}
             </div>
             <div className='input'>
                 <FontAwesomeIcon icon={faUser} className='icon'/>
-                <input type='number' value={inputs.peopleNumber} onFocus={handleFocus} onChange={(e) => onPeopleChange(Number(e.target.value))}/>
+                <input type='number' 
+                    value={inputs.peopleNumber} 
+                    className={`${inputs.peopleNumber === 0 ? 'number-of-people-container-error' : ''}`}
+                    onFocus={handleFocus} 
+                    onChange={(e) => onPeopleChange(Number(e.target.value))}/>
             </div>
         </div>
     )
