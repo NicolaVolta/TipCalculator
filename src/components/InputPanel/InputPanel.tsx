@@ -19,12 +19,20 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
         onInputChange({ ...inputs, tip: { value, isCustom}});
     }
 
-    const onBillChange = (newValue: number) => {
-        onInputChange({ ...inputs, bill: newValue});
+    const onBillChange = (newValue: string) => {
+        onInputChange({ ...inputs, bill: handleNewValue(newValue)});
     }
 
-    const onPeopleChange = (newValue: number) => {
-        onInputChange({ ...inputs, peopleNumber: newValue});
+    const onPeopleChange = (newValue: string) => {
+        onInputChange({ ...inputs, peopleNumber: handleNewValue(newValue)});
+    }
+
+    const handleNewValue = (newValue: string): string => {
+        let value = newValue.replace(/^0+/, '');
+        
+        if(value === '') value = '0';
+
+        return value;
     }
 
     const isPercentageSelected = (value: number, isCustom: boolean): boolean => {
@@ -36,7 +44,7 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
             <span>Bill</span>
             <div className='input'>
                 <FontAwesomeIcon icon={faDollarSign} className='icon'/>
-                <input type='number' value={inputs.bill} onFocus={handleFocus} onChange={(e) => onBillChange(Number(e.target.value))}/>
+                <input type='number' value={inputs.bill} onFocus={handleFocus} onChange={(e) => onBillChange(e.target.value)}/>
             </div>
             
             <span>Select Tip %</span>
@@ -73,15 +81,15 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
 
             <div className='number-of-people-container'>
                 <span>Number of people</span>
-                {inputs.peopleNumber === 0 && <span className='number-of-people-error'>Can't be zero</span>}
+                {Number(inputs.peopleNumber) === 0 && <span className='number-of-people-error'>Can't be zero</span>}
             </div>
             <div className='input'>
                 <FontAwesomeIcon icon={faUser} className='icon'/>
                 <input type='number' 
                     value={inputs.peopleNumber} 
-                    className={`${inputs.peopleNumber === 0 ? 'number-of-people-container-error' : ''}`}
+                    className={`${Number(inputs.peopleNumber) === 0 ? 'number-of-people-container-error' : ''}`}
                     onFocus={handleFocus} 
-                    onChange={(e) => onPeopleChange(Number(e.target.value))}/>
+                    onChange={(e) => onPeopleChange(e.target.value)}/>
             </div>
         </div>
     )

@@ -9,14 +9,14 @@ type tTipPercentage = {
 }
 
 export type tInputs = {
-    bill: number,
-    peopleNumber: number,
+    bill: string,
+    peopleNumber: string,
     tip?: tTipPercentage
 }
 
 const defaultInput: tInputs = {
-    bill: 0,
-    peopleNumber: 0
+    bill: '0',
+    peopleNumber: '0'
 }
 
 function App() {

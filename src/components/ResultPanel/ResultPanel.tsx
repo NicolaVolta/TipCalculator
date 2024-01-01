@@ -11,17 +11,17 @@ export const ResultPanel = ({ onReset, inputs }: iResultPanelProps) => {
 
     const tipAmount = useMemo(() => {
         if(inputs.tip === undefined) return 0;
-        if(inputs.peopleNumber === 0) return 0;
+        if(Number(inputs.peopleNumber) === 0) return 0;
 
-        const totalTip = (inputs.bill * inputs.tip.value)/100;
+        const totalTip = (Number(inputs.bill) * inputs.tip.value)/100;
 
-        return (totalTip / inputs.peopleNumber).toFixed(2);
+        return (totalTip / Number(inputs.peopleNumber)).toFixed(2);
     }, [inputs]);
 
     const total = useMemo(() => {
-        if(inputs.peopleNumber === 0) return 0;
+        if(Number(inputs.peopleNumber) === 0) return 0;
         
-        return (inputs.bill / inputs.peopleNumber).toFixed(2);
+        return (Number(inputs.bill) / Number(inputs.peopleNumber)).toFixed(2);
     }, [inputs]);
 
     return (
@@ -46,7 +46,7 @@ export const ResultPanel = ({ onReset, inputs }: iResultPanelProps) => {
                     </div>
                 </div>
             </div>
-            <input disabled={inputs.bill === 0 || inputs.peopleNumber === 0} type='button' value='RESET' className='reset-button' onClick={onReset}/>
+            <input disabled={Number(inputs.bill) === 0 || Number(inputs.peopleNumber) === 0} type='button' value='RESET' className='reset-button' onClick={onReset}/>
         </div>
     )
 }
