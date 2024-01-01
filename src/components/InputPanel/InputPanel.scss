@@ -41,8 +41,9 @@
     div {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 2rem;
+        flex-wrap: nowrap;
+        gap: .5rem;
+        justify-content: center;
     
         input {
             flex: 1;
@@ -52,10 +53,11 @@
             border-radius: .5rem;
             font-size: 20px;
             color: #fff;
-            max-width: 30%;
-            width: 30%;
+
+            
 
             &[type=number] {
+                width: calc(33.33% - 0.5rem);
                 text-align: end;
                 background-color: $very-light-greish-cyan;
                 color: $very-dark-cyan;
