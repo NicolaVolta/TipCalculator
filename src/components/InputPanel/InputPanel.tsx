@@ -74,6 +74,7 @@ export const InputPanel = ({ onInputChange, inputs }: iInputPanelProps) => {
                         onClick={() => selectPercentage(50, false)}/>
                     <input type='number' 
                         placeholder="Custom"  
+                        value={ inputs.tip?.isCustom ? inputs.tip.value : '' }
                         className={`${isPercentageSelected(0, true) ? 'selected-percentage' : ''}`}
                         onChange={(e) => selectPercentage(Number(e.target.value), true)}/>
                 </div>
