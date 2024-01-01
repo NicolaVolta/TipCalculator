@@ -3,6 +3,8 @@ import './App.scss';
 import { InputPanel } from '../components/InputPanel/InputPanel';
 import { ResultPanel } from '../components/ResultPanel/ResultPanel';
 
+import logo from './../assets/logo.svg';
+
 type tTipPercentage = {
     value: number;
     isCustom: boolean;
@@ -32,10 +34,7 @@ function App() {
 
     return (
         <div className='tip-page'>
-            <div className='title'>
-                <span>SPLI</span>
-                <span>TTER</span>
-            </div>
+            <img src={logo}/>
 
             <div className='tip-container'>
                 <InputPanel onInputChange={handleInputChange} inputs={inputs}/>
